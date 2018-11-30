@@ -1,42 +1,59 @@
-![CF](http://i.imgur.com/7v5ASc8.png) LAB
+![CF](http://i.imgur.com/7v5ASc8.png) LAB 32
 =================================================
 
-## Project Name
+## Dynamic Forms
 
-### Author: Student/Group Name
+### Author: Katherine Smith
 
 ### Links and Resources
-* [repo](http://xyz.com)
-* [travis](http://xyz.com)
-* [back-end](http://xyz.com)
-* [front-end](http://xyz.com)
+* [Implement the RESTful Reducers](https://codesandbox.io/s/n9384jo9x0)
 
+## Implement the RESTful Reducers
 ### Modules
-#### `modulename.js`
-##### Exported Values and Methods
+#### `index.js`
+- Imports the App component
+- Creates the store and connects to the store
+- Contains the Main component
+  - Passes the store down to the App component
+  - Renders the App component
+#### `app.js`
+- Imports the Player component
+- Imports actions from the store
+- Contains the App component
+  - Contains own state for id
+  - Contains the deletePlayer method which handles deleting a player with a specific id
+  - Contains the editPlayer method which handles editing a player with a specific id
+  - Contains the resetPlayer method which handles setting the id back to null
+  - Renders the players with buttons for edit and delete
+  - Passes the id and the resetPlayer method to the Player component
+  - Renders the Player component
+- Contains mapStateToProps() which maps players state to props
+- Contains mapDispatchToProps() which maps players dispatch to props
+- Contains and exports the connected App component
+#### `player.js`
+- Imports the Form component from `react-json-schema-form`
+- Imports the players schema
+- Imports actions from the store
+- Contains uiSchema to hide certain fields
+- Contains the Player component
+  - Contains own state for schema
+  - Contains the handleSubmit method which handles submitting the form
+  - Passes the schema, the uiSchema, the specific player, and the handleSubmit method to the Form component
+  - Renders the Form component
+- Contains mapStateToProps() which maps players state to props
+- Contains mapDispatchToProps() which maps players dispatch to props
+- Contains and exports the connected Player component
 
-###### `foo(thing) -> string`
-Usage Notes or examples
-
-###### `bar(array) -> array`
-Usage Notes or examples
-
-### Setup
-#### `.env` requirements
-* `PORT` - Port Number
-* `MONGODB_URI` - URL to the running mongo instance/db
-
-#### Running the app
-* `npm start`
-* Endpoint: `/foo/bar/`
-  * Returns a JSON object with abc in it.
-* Endpoint: `/bing/zing/`
-  * Returns a JSON object with xyz in it.
-
-#### Tests
-* How do you run tests?
-* What assertions were made?
-* What assertions need to be / should be made?
+### Store Modules
+#### `index.js`
+- Imports reducers and reporter
+- Exports function to create the store
+#### `players-actions.js`
+- Contains actions to be dispatched
+#### `players-reducers.js`
+- Maintains state for the store
+#### `reporter.js`
+- Provides middleware for the store
 
 #### UML
-Link to an image of the UML for your application and response to events
+<img src="./dynamic-forms.jpg" alt="dynamic-forms.jpg" width="600px">
